@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Реєстрація користувача</title>
+    <link rel="stylesheet" href="styleregister.css"> 
+    </head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <div class="blog-info">
+                <h1>Мій особистий блог</h1>
+                <p>Катькало Софія</p>
+            </div>
+            <nav class="auth-links">
+                <a href="#">Вхід</a>
+                <a href="index.html">Реєстрація</a> 
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="registration-form-container">
+            <h2>Реєстрація користувача</h2>
+            <form action="#" method="post">
+                
+                <div class="form-group">
+                    <label for="lastname">Прізвище</label>
+                    <input type="text" id="lastname" name="lastname" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="firstname">Ім'я</label>
+                    <input type="text" id="firstname" name="firstname" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="login">Логін</label>
+                    <input type="text" id="login" name="login" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="group">Навчальна група</label>
+                    <select id="group" name="group" required>
+                        <option value="281" selected>281</option>
+                        <option value="282">282</option>
+                        <option value="283">283</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm_password">Підтвердження паролю</label>
+                    <input type="password" id="confirm_password" name="confirm_password" required>
+                </div>
+
+                <div class="form-group submit-group">
+                    <button type="submit" class="register-button">Зареєструватись</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <p>&copy; Всі права захищені.</p>
+        <p>Розробник: студентка групи 303-ТН Катькало С.О.</p>
+    </footer>
+    
+</body>
+</html>
