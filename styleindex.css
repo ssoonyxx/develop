@@ -1,0 +1,124 @@
+:root {
+    --color-a: #4A90E2;  
+    --color-b: #4AD9A4;    
+    --color-c: #E84C3D;  
+    --color-d: #2E86C1;   
+    --color-e: #F1C40F;   
+    --color-f: #626567; 
+    --color-g: #D35400;   
+    
+    --gap-size: 3px;
+    --border-color: white; /* Змінено на білий (або світло-сірий #f0f0f0) */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+body {
+    min-height: 100vh; /* Гарантуємо, що body займає всю висоту */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* ... */
+}
+
+.wrapper {
+    min-height: 100vh;
+    padding: var(--gap-size);
+    gap: var(--gap-size);
+    /* Базовий макет: один стовпець */
+    display: grid; 
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(100px, auto); /* Або встановіть фіксовану висоту для маленьких екранів */
+}
+
+.block {
+    border: 1px solid var(--border-color);
+    color: white;
+    font-size: 1.5em;
+    font-weight: 600;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    border-radius: 0; /* Видалено, щоб відповідати загальному стилю */
+    min-height: 100px; /* Мінімальна висота для мобільних пристроїв */
+    text-align: center;
+}
+
+/* Кольори */
+#block-a { background-color: var(--color-a); } 
+#block-b { background-color: var(--color-b); } 
+#block-c { background-color: var(--color-c); } 
+#block-e { background-color: var(--color-e); } 
+#block-f { background-color: var(--color-f); } 
+#block-d { background-color: var(--color-d); } 
+#block-g { background-color: var(--color-g); } 
+
+
+/* --- Media Queries --- */
+/* Малюнок для <500px - всі блоки 100% (базовий `wrapper` вже це робить) */
+@media (min-width: 500px) {
+    /* Невеликий екран, наприклад, 2 колонки */
+    .wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: minmax(150px, auto);
+    }
+    #block-a { grid-column: 1 / 3; } /* 100% */
+    #block-g { grid-column: 1 / 3; } /* 100% */
+    #block-b, #block-c, #block-e, #block-f, #block-d { grid-column: span 1; } /* 50% */
+}
+
+@media (min-width: 750px) {
+    /* Розмір екрану, де вже можна реалізувати складний макет (поділ на 4 колонки) */
+    .wrapper {
+        grid-template-columns: repeat(4, 1fr);
+        /* Висота рядків: A - auto; B/C/E - 1fr; D/F - 1fr; G - auto. */
+        grid-template-rows: auto 1fr 1fr auto; 
+    }
+
+    /* Блок A - 100% */
+    #block-a { grid-area: 1 / 1 / 2 / 5; }
+
+    /* Другий ряд: B (1/4) + C (1/4) + E (2/4) */
+    #block-b { grid-area: 2 / 1 / 3 / 2; }
+    #block-c { grid-area: 2 / 2 / 3 / 3; }
+    #block-e { grid-area: 2 / 3 / 3 / 5; }
+
+    /* Третій ряд: D (2/4) + F (2/4) */
+    /* У вашому коді блоки D і F були переплутані з E і F. Виправляємо порядок у Grid: */
+    /* D - зелений, F - сірий */
+    #block-d { grid-area: 3 / 1 / 4 / 3; } /* Змінено порядок D і F відповідно до макету */
+    #block-f { grid-area: 3 / 3 / 4 / 5; }
+    
+    /* Блок G - 100% */
+    #block-g { grid-area: 4 / 1 / 5 / 5; }
+}
+
+@media (min-width: 950px) {
+    /* Залишаємо макет 750px (4 колонки) без змін, оскільки він вже відповідає макету */
+    /* Якщо потрібно змінити пропорції, це можна зробити тут. */
+}
+
+@media (min-width: 1200px) {
+    /* Масштабування до 6 колонок (для кращого розподілу) */
+    .wrapper {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: auto 1fr 1fr auto; 
+    }
+
+    /* Блок A - 100% */
+    #block-a { grid-area: 1 / 1 / 2 / 7; }
+
+    /* Другий ряд: B (2/6) + C (1/6) + E (3/6) */
+    #block-b { grid-area: 2 / 1 / 3 / 3; } /* 2/6 */
+    #block-c { grid-area: 2 / 3 / 3 / 4; } /* 1/6 */
+    #block-e { grid-area: 2 / 4 / 4 / 6; } /* E тепер займає 2 рядки */
+    #block-f { grid-area: 2 / 6 / 4 / 7; } /* F тепер займає 2 рядки */
+
+    /* Третій ряд: D (3/6) */
+    #block-d { grid-area: 3 / 1 / 4 / 4; } /* D займає 3/6 */
+
+    /* Блок G - 100% */
+    #block-g { grid-area: 4 / 1 / 5 / 7; } 
+}
