@@ -1,0 +1,191 @@
+/* --- Загальні стилі --- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white; 
+    color: #333;
+}
+
+/* --- Стилі заголовка (Header) --- */
+header {
+    /* Фоновий колір світло-блакитної смуги на всю ширину */
+    background-color: #5bc0de; 
+    color: white;
+    padding: 0;
+}
+
+/* Обмежувальний контейнер для контенту шапки та сітки */
+.header-content, .commands-grid {
+    max-width: 1200px; /* Фіксована максимальна ширина */
+    margin: 0 auto;
+    padding: 8px 20px; 
+}
+
+/* Стилі вмісту шапки */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Вирівнюємо вміст по нижньому краю */
+}
+
+.header-left {
+    text-align: left;
+    flex-shrink: 0;
+    padding-bottom: 2px;
+    color: #000000;
+}
+
+.header-left .blog-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: -5px; /* Підтягуємо ім'я ближче */
+    display: block;
+}
+
+.header-left .user-info {
+    font-size: 0.8em;
+}
+
+.header-center {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.header-center h1 {
+    margin: 0;
+    font-size: 1em;
+    font-weight: normal;
+    padding-bottom: 10px; /* Відступ від нижнього краю шапки */
+    text-align: left; /* Вирівнюємо "Завдання 2" ліворуч, як на зразку */
+}
+
+.auth-links {
+    flex-shrink: 0;
+    font-size: 0.9em;
+    padding-bottom: 2px;
+    color: #000000;
+}
+
+.auth-links a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    padding: 0 5px;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}
+
+/* --- Стилі сітки команд (Main) --- */
+.commands-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 30px; /* Збільшуємо відступ між колонками */
+    padding-top: 20px;
+}
+
+.grid-item {
+    background-color: white; 
+    padding: 0; 
+}
+
+/* Кольори заголовків, як у зразку */
+.grid-item h2 {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 0 0 5px 0;
+    margin-bottom: 10px;
+}
+
+/* Кольори для секцій */
+.commands-grid section:nth-child(1) h2 { color: #0087cb; } /* Синій */
+.commands-grid section:nth-child(2) h2 { color: #0087cb; } /* Синій */
+.commands-grid section:nth-child(3) h2 { color: #0087cb; } /* Синій */
+.commands-grid section:nth-child(4) h2 { color: #0087cb; } /* Синій, окрім Finally! */
+
+/* Стилі для команд */
+.grid-item p {
+    margin: 0;
+    line-height: 1.4;
+    padding: 2px 0;
+}
+
+.grid-item .description {
+    font-size: 0.8em;
+    color: #666; 
+    margin-top: 10px;
+    font-style: italic; /* Опис курсивом */
+}
+
+.grid-item strong {
+    font-family: 'Consolas', 'Courier New', monospace;
+    /* Синій колір для команд Git, як на скріншоті */
+    color: #007bff; 
+    display: block;
+    font-weight: normal; 
+    margin-top: 5px;
+}
+
+/* Спеціальний стиль для Finally! */
+.grid-item h2:last-of-type { /* Таргетуємо заголовок Finally! */
+    color: #dc3545 !important; /* Червоний/Помаранчевий */
+    margin-top: 20px;
+}
+
+/* Стилі посилань */
+.grid-item a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* --- Стилі підвалу (Footer) --- */
+footer {
+    /* Темно-сірий колір, як на зразку */
+    background-color: #343a40; 
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.8em;
+    margin-top: 30px;
+}
+
+footer p {
+    margin: 2px 0;
+}
+
+
+/* --- Медіа-запити для адаптивності --- */
+@media (max-width: 1200px) {
+    .header-content, .commands-grid {
+        padding: 8px 15px;
+    }
+}
+
+@media (max-width: 992px) {
+    .commands-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    /* При вузькому екрані шапка виглядає краще без flex */
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .header-left, .header-center, .auth-links {
+        padding: 5px 0;
+        text-align: center;
+    }
+    
+    .header-center h1 {
+        text-align: center;
+    }
+
+    .commands-grid {
+        grid-template-columns: 1fr;
+    }
+}
